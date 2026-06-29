@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="login-container">
+
+    <h1>👤 Login</h1>
+
+    <input type="text" id="name"
+    placeholder="Enter Name"><br><br>
+
+    <input type="email" id="email"
+    placeholder="Enter Email"><br><br>
+
+    <input type="password" id="password"
+    placeholder="Enter Password"><br><br>
+
+    <button onclick="saveUser()">
+        Login
+    </button>
+
+</div>
+
+<script>
+
+function saveUser() {
+
+    let name =
+    document.getElementById("name").value;
+
+    let email =
+    document.getElementById("email").value;
+
+    localStorage.setItem("username", name);
+    localStorage.setItem("email", email);
+
+    alert("Login Successful!");
+
+    window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cart</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Your Cart</h1>
+
+<div id="cart-items"></div>
+
+<h2 id="total"></h2>
+
+<br>
+
+<button class="checkout-btn"
+onclick="window.location.href='checkout.html'">
+Proceed To Checkout
+</button> 
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+let cartDiv = document.getElementById("cart-items");
+let total = 0;
+
+cart.forEach(item => {
+    cartDiv.innerHTML += `
+        <p>${item.name} - ₹${item.price}</p>
+    `;
+    total += item.price;
+});
+
+document.getElementById("total").innerText =
+"Total Price: ₹" + total;
+</script>
+
+<h3 style="text-align:center;color:green;">
+Free Delivery Available 🚚
+</h3>
+
+</body>
+</html>

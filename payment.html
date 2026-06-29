@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="payment-container">
+
+    <h1>💳 Select Payment Method</h1>
+
+    <div class="payment-option">
+        <input type="radio" name="payment" id="upi">
+        <label for="upi">📱 UPI Payment</label>
+    </div>
+
+    <div class="payment-option">
+        <input type="radio" name="payment" id="card">
+        <label for="card">💳 Debit / Credit Card</label>
+    </div>
+
+    <div class="payment-option">
+        <input type="radio" name="payment" id="cod">
+        <label for="cod">🚚 Cash On Delivery</label>
+    </div>
+
+    <div class="payment-option">
+        <input type="radio" name="payment" id="wallet">
+        <label for="wallet">👛 Wallet Payment</label>
+    </div>
+
+    <button class="pay-btn"
+    onclick="window.location.href='success.html'">
+
+        Pay Now
+
+    </button>
+
+</div>
+
+</body>
+</html>
