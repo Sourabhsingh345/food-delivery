@@ -1,15 +1,30 @@
 let cart = [];
 
-function addToCart(itemName, price) {
-    cart.push({ name: itemName, price: price });
+async function addToCart(itemName, price) {
 
-    document.getElementById("cart-count").innerText = cart.length;
+    const data = {
+        userEmail: "sourabh@gmail.com",
+        foodName: itemName,
+        price: price,
+        quantity: 1
+    };
 
-    localStorage.setItem("cart", JSON.stringify(cart));
+    const response = await fetch("http://localhost:5000/cart/add", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    });
 
-    alert(itemName + " added to cart!");
+    const result = await response.json();
+
+    alert(result.message);
+
+    document.getElementById("cart-count").innerText++;
 }
-function searchFood() {
+
+function searchfood() {
     let input = document.getElementById("search").value.toLowerCase();
     let cards = document.querySelectorAll(".food-card");
 
@@ -24,21 +39,25 @@ function searchFood() {
     });
 }
 
-fetch("http://localhost:5000/Foods")
+fetch("http://localhost:5000/foods")
 .then(res => res.json())
 .then(data => {
 
     let output = "";
 
-    data.forEach(Food => {
+    data.forEach(food => {
         output += `
-        <div class="Food-card">
-            <h3>${Food.name}</h3>
-            <p>₹${Food.price}</p>
+        <div class="food-card">
+            <img src="${food.image}" alt="${food.name}">
+            <h3>${food.name}</h3>
+            <p>Price: ₹${food.price}</p>
+            <button onclick="addToCart('${food.name}', ${food.price})">
+                Add To Cart
+            </button>
         </div>
         `;
     });
 
-    document.getElementById("Food-list").innerHTML = output;
+    document.getElementById("food-list").innerHTML = output;
 })
 .catch(err => console.log(err));

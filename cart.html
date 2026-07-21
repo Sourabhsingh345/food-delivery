@@ -20,20 +20,45 @@ Proceed To Checkout
 </button> 
 
 <script>
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
 let cartDiv = document.getElementById("cart-items");
 let total = 0;
 
-cart.forEach(item => {
-    cartDiv.innerHTML += `
-        <p>${item.name} - ₹${item.price}</p>
-    `;
-    total += item.price;
+fetch("http://localhost:5000/cart")
+.then(res => res.json())
+.then(data => {
+
+    data.forEach(item => {
+
+        cartDiv.innerHTML += `
+            <div class="food-card">
+                <h3>${item.foodName}</h3>
+                <p>Price : ₹${item.price}</p>
+
+                <button onclick="removeItem('${item._id}')">
+                    Remove
+                </button>
+            </div>
+        `;
+
+        total += item.price;
+
+    });
+
+    document.getElementById("total").innerText =
+    "Total Price : ₹" + total;
+
 });
 
-document.getElementById("total").innerText =
-"Total Price: ₹" + total;
+async function removeItem(id){
+
+    await fetch("http://localhost:5000/cart/" + id,{
+        method:"DELETE"
+    });
+
+    location.reload();
+
+}
+
 </script>
 
 <h3 style="text-align:center;color:green;">
@@ -41,4 +66,5 @@ Free Delivery Available 🚚
 </h3>
 
 </body>
-</html>
+</html>.
+                                                                                                                                                                                                                

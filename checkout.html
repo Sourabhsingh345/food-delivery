@@ -8,15 +8,25 @@
 
 <h1>Checkout</h1>
 
-<form action="payment.html">
-    <input type="text" placeholder="Enter Name" required><br><br>
+<input type="text" id="name" placeholder="Enter Name"><br><br>
 
-    <input type="text" placeholder="Enter Address" required><br><br>
+<input type="text" id="phone" placeholder="Enter Phone"><br><br>
 
-    <input type="tel" placeholder="Mobile Number" required><br><br>
+<textarea id="address" placeholder="Enter Address"></textarea><br><br>
 
-    <button type="submit">Place Order</button>
-</form>
+<select id="payment">
+    <option>Cash On Delivery</option>
+    <option>UPI</option>
+    <option>Credit Card</option>
+</select>
+
+<br><br>
+
+<button onclick="placeOrder()">
+Place Order
+</button>
+
+<script src="checkout.js"></script>
 
 </body>
 </html>
