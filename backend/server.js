@@ -188,6 +188,44 @@ app.post("/order", async (req, res) => {
 
 });
 
+app.get("/orders", async (req, res) => {
+
+    try {
+
+        const orders = await Order.find();
+
+        res.json(orders);
+
+    } catch (err) {
+
+        res.status(500).json({
+            success: false,
+            message: err.message
+        });
+
+    }
+
+}); 
+
+app.get("/foods", async (req, res) => {
+
+    try {
+
+        const foods = await food.find();
+
+        res.json(foods);
+
+    } catch (err) {
+
+        res.status(500).json({
+            success: false,
+            message: err.message
+        });
+
+    }
+
+});
+
 app.listen(5000, () => {
     console.log("🚀 Server Running On Port 5000");
 });

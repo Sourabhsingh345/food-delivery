@@ -1,7 +1,5 @@
 async function placeOrder() {
 
-    alert("Button Clicked");
-
     const data = {
         name: document.getElementById("name").value,
         phone: document.getElementById("phone").value,
@@ -20,14 +18,15 @@ async function placeOrder() {
             body: JSON.stringify(data)
         });
 
-        const text = await response.text();
-        alert(text);
-        console.log(text);     
+        const result = await response.json();
+
+        alert(result.message);
+
+        window.location.href = "history.html";
 
     } catch (err) {
 
         alert(err);
 
     }
-
 }
