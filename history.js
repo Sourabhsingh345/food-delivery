@@ -20,3 +20,17 @@ fetch("http://localhost:5000/orders")
     });
 
 });
+
+async function deleteAllHistory(){
+
+    alert("Button Clicked");
+
+    await fetch("http://localhost:5000/orders",{
+        method:"DELETE"
+    });
+
+    alert("Delete Request Sent");
+
+    location.reload();
+
+}

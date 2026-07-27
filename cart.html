@@ -31,6 +31,8 @@ fetch("http://localhost:5000/cart")
 
         cartDiv.innerHTML += `
             <div class="food-card">
+
+                <img src="http://localhost:5000${item.image}" width="200">
                 <h3>${item.foodName}</h3>
                 <p>Price : ₹${item.price}</p>
 
@@ -46,6 +48,8 @@ fetch("http://localhost:5000/cart")
 
     document.getElementById("total").innerText =
     "Total Price : ₹" + total;
+
+    localStorage.setItem("totalPrice",total);
 
 });
 
@@ -66,5 +70,5 @@ Free Delivery Available 🚚
 </h3>
 
 </body>
-</html>.
+</html>
                                                                                                                                                                                                                 

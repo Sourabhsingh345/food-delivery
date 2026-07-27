@@ -20,7 +20,7 @@ fetch("http://localhost:5000/foods")
 
         <h3>₹${food.price}</h3>
 
-        <button onclick="addToCart('${food.name}',${food.price})">
+        <button onclick="addToCart('${food.name}',${food.price},'${food.image}')">
 
         Add To Cart
 
@@ -34,16 +34,14 @@ fetch("http://localhost:5000/foods")
 
 });
 
-async function addToCart(name, price){
+async function addToCart(name, price,image){
 
     const item={
 
         userEmail:"sourabh@gmail.com",
-
         foodName:name,
-
         price:price,
-
+        image: image,
         quantity:1
 
     };

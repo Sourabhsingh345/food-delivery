@@ -5,7 +5,7 @@ async function placeOrder() {
         phone: document.getElementById("phone").value,
         address: document.getElementById("address").value,
         payment: document.getElementById("payment").value,
-        total: 0
+        total: Number(localStorage.getItem("totalPrice"))
     };
 
     try {

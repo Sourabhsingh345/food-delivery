@@ -226,6 +226,17 @@ app.get("/foods", async (req, res) => {
 
 });
 
+app.delete("/orders", async (req, res) => {
+
+    await Order.deleteMany({});
+
+    res.json({
+        success: true,
+        message: "All History Deleted"
+    });
+
+});
+
 app.listen(5000, () => {
     console.log("🚀 Server Running On Port 5000");
 });
