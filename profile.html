@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Profile</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="toast.js"></script>
+    <style>
+        .profile-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .profile-avatar {
+            font-size: 80px;
+            background: #ffe0b2;
+            width: 130px;
+            height: 130px;
+            line-height: 130px;
+            border-radius: 50%;
+            margin: 0 auto 20px auto;
+            border: 4px solid #ff6600;
+        }
+        .profile-info {
+            text-align: left;
+            margin: 30px 0;
+            background: #fff8f0;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #ff6600;
+        }
+        .profile-info p {
+            font-size: 16px;
+            margin: 12px 0;
+            color: #444;
+        }
+        .profile-info p b {
+            color: #ff6600;
+            display: inline-block;
+            width: 110px;
+        }
+        .profile-actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        .profile-btn {
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+            background: #ff6600;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.2s;
+        }
+        .profile-btn.secondary {
+            background: #555;
+        }
+        .profile-btn:hover {
+            transform: scale(1.03);
+        }
+    </style>
+</head>
+<body>
+
+<div class="profile-container">
+    <div class="profile-avatar">👤</div>
+    <h1 style="color: #ff6600; margin: 0;">My Profile</h1>
+    
+    <div class="profile-info">
+        <p><b>Name:</b> <span id="prof-name">Sourabh Singh</span></p>
+        <p><b>Email:</b> <span id="prof-email">sourabhsingh@gmail.com</span></p>
+        <p><b>Phone:</b> <span id="prof-phone">+91 9302591899</span></p>
+        <p><b>Address:</b> <span>12, MG Road, Indore, MP</span></p>
+        <p><b>Member Since:</b> <span>July 2026</span></p>
+    </div>
+
+    <div class="profile-actions">
+        <button class="profile-btn" onclick="window.location.href='index.html'">Back to Home</button>
+        <button class="profile-btn secondary" onclick="logoutUser()">Logout</button>
+    </div>
+</div>
+
+<script>
+    // Load dynamically from localStorage if present
+    document.getElementById("prof-name").innerText = localStorage.getItem("username") || "Sourabh Singh";
+    document.getElementById("prof-email").innerText = localStorage.getItem("email") || "sourabhsingh@gmail.com";
+
+    function logoutUser() {
+        localStorage.clear();
+        alert("Logged Out Successfully");
+        window.location.href = "login.html";
+    }
+</script>
+
+</body>
+</html>

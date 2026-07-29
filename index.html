@@ -4,6 +4,7 @@
 <head>
     <title>Food Delivery App</title>
     <link rel="stylesheet" href="style.css">
+    <script src="toast.js"></script>
 </head>
 
 <body>
@@ -83,21 +84,36 @@ function handleProfile(value){
 
 </section>
 
-<section class="offers">
-    <h2>🔥 Today's Offers</h2>
-
-    <div class="offer-card">
-        Pizza Combo - 30% OFF
-    </div>
-
-    <div class="offer-card">
-        Burger + Coke - ₹199
-    </div>
-</section>
-
 <div class="food-container">
 <div id="food-list"></div>
 </div>
+
+<section class="restaurant-section">
+    <h2>🍽️ Featured Restaurants</h2>
+    <div class="restaurant-container">
+        <div class="restaurant-card">
+            <h3>The Spice Route</h3>
+            <p class="specialties">🇮🇳 Indian • Biryani • Curries</p>
+            <div class="contact-info">
+                <p>📞 <strong>Call:</strong> +91 98765 43210</p>
+                <p>📧 <strong>Email:</strong> order@spiceroute.in</p>
+                <p>📍 <strong>Address:</strong> 12, MG Road, Indore</p>
+            </div>
+            <button onclick="window.location.href='menu.html'">Order from The Spice Route</button>
+        </div>
+
+        <div class="restaurant-card">
+            <h3>Bella Italia</h3>
+            <p class="specialties">🇮🇹 Italian • Pizza • Pasta</p>
+            <div class="contact-info">
+                <p>📞 <strong>Call:</strong> +91 87654 32109</p>
+                <p>📧 <strong>Email:</strong> ciao@bellaitalia.in</p>
+                <p>📍 <strong>Address:</strong> 45, Vijay Nagar, Indore</p>
+            </div>
+            <button onclick="window.location.href='menu.html'">Order from Bella Italia</button>
+        </div>
+    </div>
+</section>
 
 <section class="reviews">
 
@@ -115,6 +131,24 @@ function handleProfile(value){
 ⭐⭐⭐⭐⭐ Best Service
 </div>
 
+</section>
+
+<section class="offers-section">
+    <h2>🔥 Today's Exclusive Offers</h2>
+    <div class="offers-container">
+        <div class="offer-card">
+            <span>🍕 Buy 1 Get 1 Free</span>
+            <span class="code">On Medium Pizzas</span>
+        </div>
+        <div class="offer-card">
+            <span>🍰 Free Choco Lava Cake</span>
+            <span class="code">Orders above ₹499</span>
+        </div>
+        <div class="offer-card">
+            <span>🥤 flat 50% Off</span>
+            <span class="code">Use Code: FIRST50</span>
+        </div>
+    </div>
 </section>
 
 <section class="contact">

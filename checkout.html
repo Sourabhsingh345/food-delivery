@@ -3,28 +3,41 @@
 <head>
     <title>Checkout</title>
     <link rel="stylesheet" href="style.css">
+    <script src="toast.js"></script>
 </head>
 <body>
 
-<h1>Checkout</h1>
+<div class="checkout-container">
+    <h1>Checkout details</h1>
+    
+    <div class="checkout-form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" placeholder="Enter Name">
+    </div>
 
-<input type="text" id="name" placeholder="Enter Name"><br><br>
+    <div class="checkout-form-group">
+        <label for="phone">Phone Number</label>
+        <input type="text" id="phone" placeholder="Enter Phone Number">
+    </div>
 
-<input type="text" id="phone" placeholder="Enter Phone"><br><br>
+    <div class="checkout-form-group">
+        <label for="address">Delivery Address</label>
+        <textarea id="address" rows="3" placeholder="Enter Address"></textarea>
+    </div>
 
-<textarea id="address" placeholder="Enter Address"></textarea><br><br>
+    <div class="checkout-form-group">
+        <label for="payment">Payment Mode</label>
+        <select id="payment">
+            <option>Cash On Delivery</option>
+            <option>UPI</option>
+            <option>Credit Card</option>
+        </select>
+    </div>
 
-<select id="payment">
-    <option>Cash On Delivery</option>
-    <option>UPI</option>
-    <option>Credit Card</option>
-</select>
-
-<br><br>
-
-<button onclick="placeOrder()">
-Place Order
-</button>
+    <button class="checkout-submit-btn" onclick="placeOrder()">
+        Place Order
+    </button>
+</div>
 
 <script src="checkout.js"></script>
 

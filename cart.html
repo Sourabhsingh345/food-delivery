@@ -3,6 +3,7 @@
 <head>
     <title>Cart</title>
     <link rel="stylesheet" href="style.css">
+    <script src="toast.js"></script>
 </head>
 <body>
 
@@ -30,13 +31,12 @@ fetch("http://localhost:5000/cart")
     data.forEach(item => {
 
         cartDiv.innerHTML += `
-            <div class="food-card">
-
-                <img src="http://localhost:5000${item.image}" width="200">
-                <h3>${item.foodName}</h3>
-                <p>Price : ₹${item.price}</p>
-
-                <button onclick="removeItem('${item._id}')">
+            <div class="cart-item">
+                <div class="cart-details">
+                    <h3>${item.foodName}</h3>
+                    <p>Price : ₹${item.price}</p>
+                </div>
+                <button class="remove-btn" onclick="removeItem('${item._id}')">
                     Remove
                 </button>
             </div>
