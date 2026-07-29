@@ -203,7 +203,8 @@ app.post("/order", async (req, res) => {
 
         res.json({
             success: true,
-            message: "Order Placed Successfully"
+            message: "Order Placed Successfully",
+            order: order
         });
 
     } catch (err) {
@@ -215,6 +216,31 @@ app.post("/order", async (req, res) => {
 
     }
 
+});
+
+app.get("/order/:id", async (req, res) => {
+    try {
+        const order = await Order.findById(req.params.id);
+        if (!order) {
+            return res.status(404).json({ success: false, message: "Order not found" });
+        }
+        res.json(order);
+    } catch (err) {
+        res.status(500).json({ success: false, message: err.message });
+    }
+});
+
+app.put("/order/:id/status", async (req, res) => {
+    try {
+        const { status } = req.body;
+        const order = await Order.findByIdAndUpdate(req.params.id, { status }, { new: true });
+        if (!order) {
+            return res.status(404).json({ success: false, message: "Order not found" });
+        }
+        res.json({ success: true, message: "Status updated successfully", order });
+    } catch (err) {
+        res.status(500).json({ success: false, message: err.message });
+    }
 });
 
 app.get("/orders", async (req, res) => {

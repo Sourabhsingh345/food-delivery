@@ -12,6 +12,11 @@ const OrderSchema = new mongoose.Schema({
 
     total: Number,
 
+    status: {
+        type: String,
+        default: "Order Placed"
+    },
+
     orderDate: {
         type: Date,
         default: Date.now

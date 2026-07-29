@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Track Order - Food Delivery App</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="toast.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+<header>
+    <h1>Food Delivery App</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="cart.html">Cart</a>
+        <a href="history.html">📦 History</a>
+    </nav>
+</header>
+
+<div class="tracking-container">
+    <div class="tracking-header">
+        <h2>Order Tracking</h2>
+        <p>Order ID: <span id="tracking-order-id" class="highlight-id">Loading...</span></p>
+    </div>
+
+    <!-- Live Map/Delivery Animation simulation -->
+    <div class="simulation-map-card">
+        <h3>Live Delivery Simulation</h3>
+        <div class="delivery-track-wrapper">
+            <div class="delivery-track-progress" id="delivery-track-progress"></div>
+            
+            <div class="track-node node-placed active" id="node-placed-map">
+                <i class="fa-solid fa-receipt"></i>
+                <span class="node-label">Placed</span>
+            </div>
+            <div class="track-node node-preparing" id="node-preparing-map">
+                <i class="fa-solid fa-fire-burner"></i>
+                <span class="node-label">Kitchen</span>
+            </div>
+            <div class="track-node node-transit" id="node-transit-map">
+                <i class="fa-solid fa-motorcycle"></i>
+                <span class="node-label">Transit</span>
+            </div>
+            <div class="track-node node-delivered" id="node-delivered-map">
+                <i class="fa-solid fa-house-chimney"></i>
+                <span class="node-label">Home</span>
+            </div>
+
+            <!-- Moving delivery icon -->
+            <div class="moving-delivery-boy" id="delivery-boy">
+                <i class="fa-solid fa-motorcycle"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Timeline progress bar -->
+    <div class="status-timeline-card">
+        <ul class="timeline">
+            <li class="timeline-item" id="step-placed">
+                <div class="timeline-icon"><i class="fa-solid fa-check"></i></div>
+                <div class="timeline-info">
+                    <h4>Order Placed</h4>
+                    <p>We have received your order.</p>
+                </div>
+            </li>
+            <li class="timeline-item" id="step-preparing">
+                <div class="timeline-icon"><i class="fa-solid fa-ellipsis"></i></div>
+                <div class="timeline-info">
+                    <h4>Preparing Food</h4>
+                    <p>The chef is cooking your delicious meal.</p>
+                </div>
+            </li>
+            <li class="timeline-item" id="step-transit">
+                <div class="timeline-icon"><i class="fa-solid fa-ellipsis"></i></div>
+                <div class="timeline-info">
+                    <h4>Out For Delivery</h4>
+                    <p>Our delivery partner is bringing your order.</p>
+                </div>
+            </li>
+            <li class="timeline-item" id="step-delivered">
+                <div class="timeline-icon"><i class="fa-solid fa-ellipsis"></i></div>
+                <div class="timeline-info">
+                    <h4>Delivered</h4>
+                    <p>Enjoy your meal!</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Driver Info & Support -->
+    <div class="driver-card" id="driver-details">
+        <h3>Delivery Partner Details</h3>
+        <div class="driver-profile">
+            <div class="driver-avatar">
+                <i class="fa-solid fa-user-ninja"></i>
+            </div>
+            <div class="driver-meta">
+                <h4 id="driver-name">Ramesh Kumar</h4>
+                <p>⚡ Fast & Safe Delivery Partner</p>
+                <p>🏍️ <b>Vehicle:</b> Activa (MP-09-HD-4321)</p>
+                <p>📞 <b>Contact:</b> +91 98765 43210</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order details -->
+    <div class="order-details-card">
+        <h3>Order Summary</h3>
+        <div class="details-grid">
+            <div><strong>Deliver To:</strong> <span id="summary-address">-</span></div>
+            <div><strong>Contact Customer:</strong> <span id="summary-name">-</span> (<span id="summary-phone">-</span>)</div>
+            <div><strong>Payment Mode:</strong> <span id="summary-payment">-</span></div>
+            <div><strong>Total Amount:</strong> <span class="summary-total" id="summary-total">-</span></div>
+        </div>
+    </div>
+
+    <!-- Simulation Control Console -->
+    <div class="simulation-console">
+        <h3>🔧 Demo Simulator Console</h3>
+        <p>Change statuses manually to test the timeline changes and the delivery boy movement!</p>
+        <div class="btn-group">
+            <button onclick="updateSimulatedStatus('Order Placed')">Placed</button>
+            <button onclick="updateSimulatedStatus('Preparing')">Preparing</button>
+            <button onclick="updateSimulatedStatus('Out for Delivery')">Out for Delivery</button>
+            <button onclick="updateSimulatedStatus('Delivered')">Delivered</button>
+        </div>
+        <div style="margin-top: 15px;">
+            <button class="auto-sim-btn" id="auto-sim-btn" onclick="toggleAutoSimulation()">🚀 Start Auto Simulation</button>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 Food Delivery App | Made by Sourabh Singh</p>
+</footer>
+
+<script src="track.js"></script>
+</body>
+</html>

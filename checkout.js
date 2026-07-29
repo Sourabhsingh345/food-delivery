@@ -22,7 +22,11 @@ async function placeOrder() {
 
         alert(result.message);
 
-        window.location.href = "history.html";
+        if (result.order && result.order._id) {
+            window.location.href = `track.html?id=${result.order._id}`;
+        } else {
+            window.location.href = "history.html";
+        }
 
     } catch (err) {
 
