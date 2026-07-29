@@ -28,34 +28,63 @@ app.get("/foods", async (req, res) => {
 });
 
 app.get("/add-food", async (req, res) => {
+    await food.deleteMany({});
     await food.insertMany([
         {
             name: "Pizza",
             price: 299,
-            category:"Fast Food",
-            description:"Chees Veg Pizza",
+            category: "Fast Food",
+            description: "Cheesy Veg Pizza",
             image: "/images/pizza.jpg"
         },
         {
             name: "Burger",
             price: 149,
-            category:"Fast Food",
-            description:"Veg Burger",
+            category: "Fast Food",
+            description: "Crispy Veg Burger",
             image: "/images/burger.jpg"
         },
         {
             name: "Pasta",
             price: 199,
-            category:"Italian",
-            description:"White Sauce Pasta",
+            category: "Italian",
+            description: "White Sauce Pasta",
             image: "/images/pasta.jpg"
         },
         {
             name: "Sandwich",
             price: 99,
-            category:"Snacks",
-            description:"Grilled Sandwich",
+            category: "Snacks",
+            description: "Grilled Cheese Sandwich",
             image: "/images/sandwich.jpg"
+        },
+        {
+            name: "Hakka Noodles",
+            price: 179,
+            category: "Chinese",
+            description: "Spicy Veg Hakka Noodles",
+            image: "/images/noodles.jpg"
+        },
+        {
+            name: "Chicken Biryani",
+            price: 249,
+            category: "Main Course",
+            description: "Aromatic Hyderabadi Biryani",
+            image: "/images/biryani.jpg"
+        },
+        {
+            name: "French Fries",
+            price: 89,
+            category: "Snacks",
+            description: "Crispy Golden French Fries",
+            image: "/images/fries.jpg"
+        },
+        {
+            name: "Paneer Tikka",
+            price: 229,
+            category: "Starter",
+            description: "Grilled Spiced Paneer Tikka",
+            image: "/images/paneer_tikka.jpg"
         }
     ]);
 
