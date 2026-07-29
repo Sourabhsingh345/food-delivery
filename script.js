@@ -40,15 +40,15 @@ function searchfood() {
 }
 
 fetch("http://localhost:5000/foods")
-.then(res => res.json())
-.then(data => {
+    .then(res => res.json())
+    .then(data => {
 
-    let output = "";
+        let output = "";
 
-    data.forEach(food => {
-        output += `
+        data.forEach(food => {
+            output += `
         <div class="food-card">
-            <img src="${food.image}" alt="${food.name}">
+            <img src="http://localhost:5000${food.image}" alt="${food.name}">
             <h3>${food.name}</h3>
             <p>Price: ₹${food.price}</p>
             <button onclick="addToCart('${food.name}', ${food.price})">
@@ -56,8 +56,8 @@ fetch("http://localhost:5000/foods")
             </button>
         </div>
         `;
-    });
+        });
 
-    document.getElementById("food-list").innerHTML = output;
-})
-.catch(err => console.log(err));
+        document.getElementById("food-list").innerHTML = output;
+    })
+    .catch(err => console.log(err));
