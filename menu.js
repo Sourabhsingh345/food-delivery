@@ -1,9 +1,9 @@
 let menu = document.getElementById("menu");
 
-fetch("http://localhost:5000/foods")
+const API = "https://food-delivery-47zq.onrender.com";
 
+fetch(`${API}/foods`)
 .then(res => res.json())
-
 .then(data => {
 
     data.forEach(food => {
@@ -12,7 +12,7 @@ fetch("http://localhost:5000/foods")
 
         <div class="food-card">
 
-        <img src="http://localhost:5000${food.image}" width="200">
+        <img src="${API}${food.image}" width="200">
 
         <h2>${food.name}</h2>
 
@@ -21,9 +21,7 @@ fetch("http://localhost:5000/foods")
         <h3>₹${food.price}</h3>
 
         <button onclick="addToCart('${food.name}',${food.price},'${food.image}')">
-
         Add To Cart
-
         </button>
 
         </div>
@@ -34,32 +32,24 @@ fetch("http://localhost:5000/foods")
 
 });
 
-async function addToCart(name, price,image){
+async function addToCart(name, price, image){
 
-    const item={
-
-        userEmail:"sourabh@gmail.com",
-        foodName:name,
-        price:price,
+    const item = {
+        userEmail: "sourabh@gmail.com",
+        foodName: name,
+        price: price,
         image: image,
-        quantity:1
-
+        quantity: 1
     };
 
-    const response=await fetch("http://localhost:5000/cart/add",{
-
-        method:"POST",
-
-        headers:{
-            "Content-Type":"application/json"
+    const response = await fetch(`${API}/cart/add`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
         },
-
-        body:JSON.stringify(item)
-
+        body: JSON.stringify(item)
     });
 
-    const result=await response.json();
-
+    const result = await response.json();
     alert(result.message);
-
 }

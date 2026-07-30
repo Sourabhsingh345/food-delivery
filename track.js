@@ -1,4 +1,5 @@
-// Global states
+const API = "https://food-delivery-47zq.onrender.com";
+
 let orderId = null;
 let currentStatus = "Order Placed";
 const statuses = ["Order Placed", "Preparing", "Out for Delivery", "Delivered"];
@@ -12,7 +13,7 @@ window.onload = async () => {
     if (!orderId) {
         // Fallback: Fetch latest order if no ID specified in URL
         try {
-            const response = await fetch("http://localhost:5000/orders");
+            const response = await fetch("${API}/orders");
             const orders = await response.json();
             if (orders && orders.length > 0) {
                 // Get the latest order
@@ -41,7 +42,7 @@ async function fetchOrderDetails() {
     if (!orderId) return;
 
     try {
-        const response = await fetch(`http://localhost:5000/order/${orderId}`);
+        const response = await fetch(`${API}/order/${orderId}`);
         if (!response.ok) {
             throw new Error("Order not found");
         }
@@ -163,7 +164,7 @@ async function updateSimulatedStatus(newStatus) {
     if (!orderId) return;
 
     try {
-        const response = await fetch(`http://localhost:5000/order/${orderId}/status`, {
+        const response = await fetch(`${API}/order/${orderId}/status`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"

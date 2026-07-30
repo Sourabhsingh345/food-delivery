@@ -1,3 +1,5 @@
+const API = "https://food-delivery-47zq.onrender.com";
+
 async function placeOrder() {
 
     const data = {
@@ -10,7 +12,7 @@ async function placeOrder() {
 
     try {
 
-        const response = await fetch("http://localhost:5000/order", {
+        const response = await fetch(`${API}/order`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

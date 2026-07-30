@@ -1,3 +1,5 @@
+const API = "https://food-delivery-47zq.onrender.com";
+
 let cart = [];
 
 async function addToCart(itemName, price) {
@@ -9,7 +11,7 @@ async function addToCart(itemName, price) {
         quantity: 1
     };
 
-    const response = await fetch("http://localhost:5000/cart/add", {
+    const response = await fetch(`${API}/cart/add`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -39,7 +41,7 @@ function searchfood() {
     });
 }
 
-fetch("http://localhost:5000/foods")
+fetch(`${API}/foods`)
     .then(res => res.json())
     .then(data => {
 
@@ -48,7 +50,7 @@ fetch("http://localhost:5000/foods")
         data.forEach(food => {
             output += `
         <div class="food-card">
-            <img src="http://localhost:5000${food.image}" alt="${food.name}">
+            <img src="${API}${food.image}" alt="${food.name}">
             <h3>${food.name}</h3>
             <p>Price: ₹${food.price}</p>
             <button onclick="addToCart('${food.name}', ${food.price})">
