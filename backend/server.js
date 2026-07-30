@@ -4,9 +4,9 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const path = require("path");
 const food = require("./models/food");
-const User = require("./models/User");
-const Cart = require("./models/Cart");
-const Order = require("./models/Order");
+const User = require("./models/user");
+const Cart = require("./models/cart");
+const Order = require("./models/order");
 
 const app = express();
 
