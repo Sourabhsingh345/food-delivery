@@ -97,19 +97,43 @@ app.get("/delete-all", async (req, res) => {
 });
 
 app.post("/register", async (req, res) => {
+
     try {
-        const user = new User(req.body);
+
+        const { name, email, password, phone } = req.body;
+
+        const existingUser = await User.findOne({ email });
+
+        if (existingUser) {
+            return res.status(400).json({
+                success: false,
+                message: "Email already registered"
+            });
+        }
+
+        const user = new User({
+            name,
+            email,
+            password,
+            phone
+        });
+
         await user.save();
 
         res.json({
-            message: "User Registered Successfully"
+            success: true,
+            message: "Registration Successful"
         });
+
     } catch (err) {
+
         res.status(500).json({
             success: false,
             message: err.message
         });
+
     }
+
 });
 
 app.post("/login", async (req, res) => {

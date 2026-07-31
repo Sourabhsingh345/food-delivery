@@ -25,26 +25,48 @@
         Login
     </button>
 
+    <br><br>
+
+<p>Don't have an account?</p>
+
+<a href="register.html">
+    <button type="button">Register</button>
+</a>
+
 </div>
 
 <script>
 
-function saveUser() {
+const API = "https://food-delivery-47zq.onrender.com";
 
-    let name =
-    document.getElementById("name").value;
+async function saveUser() {
 
-    let email =
-    document.getElementById("email").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
 
-    localStorage.setItem("username", name);
-    localStorage.setItem("email", email);
+    const res = await fetch(`${API}/login`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            email,
+            password
+        })
+    });
 
-    alert("Login Successful!");
+    const data = await res.json();
 
-    window.location.href = "index.html";
+    alert(data.message);
+
+    if (data.success) {
+
+        localStorage.setItem("username", data.user.name);
+        localStorage.setItem("email", data.user.email);
+
+        window.location.href = "index.html";
+    }
+
 }
-</script>
 
-</body>
-</html>
+</script>
