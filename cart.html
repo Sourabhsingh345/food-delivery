@@ -1,3 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cart</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="toast.js"></script>
+</head>
+<body>
+
+<h1>Your Cart</h1>
+
+<div id="cart-items"></div>
+
+<h2 id="total"></h2>
+
+<br>
+
+<button class="checkout-btn"
+onclick="window.location.href='checkout.html'">
+Proceed To Checkout
+</button>
+
+<h3 style="text-align:center;color:green;">
+Free Delivery Available 🚚
+</h3>
+
 <script>
 const API = "https://food-delivery-47zq.onrender.com";
 
@@ -43,3 +69,6 @@ async function removeItem(id){
 
 }
 </script>
+
+</body>
+</html>
