@@ -1,30 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Cart</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="toast.js"></script>
-</head>
-<body>
-
-<h1>Your Cart</h1>
-
-<div id="cart-items"></div>
-
-<h2 id="total"></h2>
-
-<br>
-
-<button class="checkout-btn"
-onclick="window.location.href='checkout.html'">
-Proceed To Checkout
-</button> 
-
 <script>
+const API = "https://food-delivery-47zq.onrender.com";
+
 let cartDiv = document.getElementById("cart-items");
 let total = 0;
 
-fetch("http://localhost:5000/cart")
+fetch(`${API}/cart`)
 .then(res => res.json())
 .then(data => {
 
@@ -49,26 +29,17 @@ fetch("http://localhost:5000/cart")
     document.getElementById("total").innerText =
     "Total Price : ₹" + total;
 
-    localStorage.setItem("totalPrice",total);
+    localStorage.setItem("totalPrice", total);
 
 });
 
 async function removeItem(id){
 
-    await fetch("http://localhost:5000/cart/" + id,{
+    await fetch(`${API}/cart/${id}`,{
         method:"DELETE"
     });
 
     location.reload();
 
 }
-
 </script>
-
-<h3 style="text-align:center;color:green;">
-Free Delivery Available 🚚
-</h3>
-
-</body>
-</html>
-                                                                                                                                                                                                                
