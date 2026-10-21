@@ -1,167 +1,142 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Food Delivery App</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover delicious local favourites and get them delivered to your door.">
+    <title>Food Delivery | Fresh favourites, delivered</title>
     <link rel="stylesheet" href="style.css">
-    <script src="toast.js"></script>
+    <script src="toast.js" defer></script>
+    <script src="script.js" defer></script>
 </head>
 
-<body>
-
-<header>
-    <h1>Food Delivery App</h1>
-    <nav>
-        <a href="#">Home</a>
-        <a href="menu.html">Menu</a>
-        <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
-        <a href="history.html">📦 History</a>
-        <a href="track.html">🛵 Track Order</a>
-        <div class="profile">
-
-    <select onchange="handleProfile(this.value)">
-        <option value="">Profile</option>
-        <option value="profile.html">My Profile</option>
-        <option value="history.html">My Orders</option>
-        <option value="logout">Logout</option>
-    </select>
-</div>
-
-<script>
-
-document.getElementById("userName").innerText =
-localStorage.getItem("username") || "Guest";
-
-function handleProfile(value){
-
-    if(value=="profile.html"){
-        window.location.href="profile.html";
-    }
-
-    else if(value=="history.html"){
-        window.location.href="history.html";
-    }
-
-    else if(value=="logout"){
-        localStorage.clear();
-        alert("Logged Out Successfully");
-        window.location.href="login.html";
-    }
-}
-
-</script>
-</a>
+<body class="home-page">
+    <header class="site-header">
+        <div class="brand-block">
+            <a class="brand" href="index.html" aria-label="Food Delivery home">🍴 Foodie</a>
+            <span class="delivery-location">Delivering to <strong>Indore</strong>⌄</span>
+        </div>
+        <nav class="site-nav" aria-label="Main navigation">
+            <a href="index.html" aria-current="page">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="history.html">Orders</a>
+            <a href="track.html">Track order</a>
+            <a class="cart-link" href="cart.html">Cart <span id="cart-count" aria-live="polite">0</span></a>
+            <select id="profile-menu" aria-label="Account menu">
+                <option value="">Profile</option>
+                <option value="profile.html">My Profile</option>
+                <option value="history.html">My Orders</option>
+                <option value="login.html">Login</option>
+                <option value="logout">Logout</option>
+            </select>
+        </nav>
+    </header>
+    <nav class="mobile-bottom-nav" aria-label="Quick navigation">
+        <a href="index.html" aria-current="page"><span aria-hidden="true">⌂</span><small>Home</small></a>
+        <a href="menu.html"><span aria-hidden="true">▦</span><small>Menu</small></a>
+        <a href="cart.html"><span class="mobile-cart-icon" aria-hidden="true">🛒<b id="mobile-cart-count">0</b></span><small>Cart</small></a>
+        <a href="history.html"><span aria-hidden="true">▤</span><small>Orders</small></a>
     </nav>
-</header>
 
-<section class="hero">
-    <h2>Order Your Favorite Food</h2>
-    <p>Fast Delivery At Your Doorstep</p>
+    <main>
+        <section class="hero home-hero">
+            <span class="hero-eyebrow">GOOD FOOD, GOOD MOOD</span>
+            <h1 id="welcome-heading">Your next favourite meal is here</h1>
+            <p>Fresh picks from your favourite kitchens, delivered to your doorstep.</p>
+            <form class="search-box" id="food-search-form" role="search">
+                <label class="visually-hidden" for="search">Search dishes</label>
+                <input id="search" type="search" placeholder="Search pizza, biryani, snacks..." autocomplete="off">
+                <button type="submit">Explore food</button>
+            </form>
+            <a class="hero-menu-link" href="#discover">Explore today's menu ↓</a>
+        </section>
 
-    <div class="search-box">
-        <input type="text" placeholder="Search Food">
-        <button>Order Now</button>
-    </div>
+        <section class="stats home-stats" aria-label="Our service at a glance">
+            <div><h2>5,000+</h2><p>Happy orders</p></div>
+            <div><h2>100+</h2><p>Menu favourites</p></div>
+            <div><h2>30 min</h2><p>Average delivery</p></div>
+        </section>
 
-</section>
-
-<section class="stats">
-
-<div>
-<h2>5000+</h2>
-<p>Orders Delivered</p>
-</div>
-
-<div>
-<h2>100+</h2>
-<p>Restaurants</p>
-</div>
-
-<div>
-<h2>50+</h2>
-<p>Delivery Partners</p>
-</div>
-
-</section>
-
-<div class="food-container">
-<div id="food-list"></div>
-</div>
-
-<section class="restaurant-section">
-    <h2>🍽️ Featured Restaurants</h2>
-    <div class="restaurant-container">
-        <div class="restaurant-card">
-            <h3>The Spice Route</h3>
-            <p class="specialties">🇮🇳 Indian • Biryani • Curries</p>
-            <div class="contact-info">
-                <p>📞 <strong>Call:</strong> +91 98765 43210</p>
-                <p>📧 <strong>Email:</strong> order@spiceroute.in</p>
-                <p>📍 <strong>Address:</strong> 12, MG Road, Indore</p>
+        <section class="discover-section" id="discover">
+            <div class="section-heading">
+                <div>
+                    <span class="section-kicker">MADE FOR YOUR CRAVINGS</span>
+                    <h2>Find your next favourite</h2>
+                    <p>Explore our menu and pick something delicious.</p>
+                </div>
+                <label class="sort-control" for="food-sort">
+                    Sort by
+                    <select id="food-sort">
+                        <option value="recommended">Recommended</option>
+                        <option value="price-low">Price: low to high</option>
+                        <option value="price-high">Price: high to low</option>
+                    </select>
+                </label>
             </div>
-            <button onclick="window.location.href='menu.html'">Order from The Spice Route</button>
-        </div>
-
-        <div class="restaurant-card">
-            <h3>Bella Italia</h3>
-            <p class="specialties">🇮🇹 Italian • Pizza • Pasta</p>
-            <div class="contact-info">
-                <p>📞 <strong>Call:</strong> +91 87654 32109</p>
-                <p>📧 <strong>Email:</strong> ciao@bellaitalia.in</p>
-                <p>📍 <strong>Address:</strong> 45, Vijay Nagar, Indore</p>
+            <div class="category-filters" id="category-filters" aria-label="Filter by category"></div>
+            <p class="results-summary" id="results-summary" aria-live="polite"></p>
+            <div class="food-container">
+                <div id="food-list" class="home-food-grid" aria-live="polite">
+                    <p class="menu-state">Loading today's menu...</p>
+                </div>
             </div>
-            <button onclick="window.location.href='menu.html'">Order from Bella Italia</button>
-        </div>
-    </div>
-</section>
+        </section>
 
-<section class="reviews">
+        <section class="restaurant-section">
+            <span class="section-kicker">HANDPICKED FOR YOU</span>
+            <h2>Featured Restaurants</h2>
+            <div class="restaurant-container">
+                <article class="restaurant-card">
+                    <div class="restaurant-icon" aria-hidden="true">🍛</div>
+                    <h3>The Spice Route</h3>
+                    <p class="specialties">Indian · Biryani · Curries</p>
+                    <p class="restaurant-meta">⭐ 4.8 <span>·</span> 25–35 min</p>
+                    <a class="restaurant-order-link" href="menu.html">Explore the menu <span aria-hidden="true">→</span></a>
+                </article>
+                <article class="restaurant-card">
+                    <div class="restaurant-icon" aria-hidden="true">🍝</div>
+                    <h3>Bella Italia</h3>
+                    <p class="specialties">Italian · Pizza · Pasta</p>
+                    <p class="restaurant-meta">⭐ 4.7 <span>·</span> 30–40 min</p>
+                    <a class="restaurant-order-link" href="menu.html">Explore the menu <span aria-hidden="true">→</span></a>
+                </article>
+            </div>
+        </section>
 
-<h2>Customer Reviews</h2>
+        <section class="offers-section">
+            <span class="section-kicker">A LITTLE EXTRA JOY</span>
+            <h2>Today's Offers</h2>
+            <div class="offers-container">
+                <article class="offer-card"><span>🍕 Buy 1 Get 1 Free</span><span class="code">On medium pizzas</span></article>
+                <article class="offer-card"><span>🍰 Free Choco Lava Cake</span><span class="code">Orders above ₹499</span></article>
+                <article class="offer-card"><span>🥤 Flat 50% Off</span><span class="code">Use code: FIRST50</span></article>
+            </div>
+        </section>
 
-<div class="review-card">
-⭐⭐⭐⭐⭐ Amazing Food
-</div>
+        <section class="reviews">
+            <span class="section-kicker">KIND WORDS, FULL BELLIES</span>
+            <h2>What our customers say</h2>
+            <div class="review-grid">
+                <blockquote class="review-card"><span aria-label="5 out of 5 stars">★★★★★</span><p>“Amazing food and it arrived piping hot!”</p><cite>— A happy foodie</cite></blockquote>
+                <blockquote class="review-card"><span aria-label="5 out of 5 stars">★★★★★</span><p>“Ordering was easy, and delivery was quick.”</p><cite>— A regular customer</cite></blockquote>
+                <blockquote class="review-card"><span aria-label="5 out of 5 stars">★★★★★</span><p>“So many tasty options. The biryani is a favourite.”</p><cite>— A local food lover</cite></blockquote>
+            </div>
+        </section>
 
-<div class="review-card">
-⭐⭐⭐⭐⭐ Fast Delivery
-</div>
+        <section class="contact">
+            <h2>Need a hand?</h2>
+            <p>We’re here to help with your next delicious order.</p>
+            <a href="mailto:sourabhsingh@gmail.com">sourabhsingh@gmail.com</a>
+            <p>📞 +91 9302591899</p>
+        </section>
+    </main>
 
-<div class="review-card">
-⭐⭐⭐⭐⭐ Best Service
-</div>
-
-</section>
-
-<section class="offers-section">
-    <h2>🔥 Today's Exclusive Offers</h2>
-    <div class="offers-container">
-        <div class="offer-card">
-            <span>🍕 Buy 1 Get 1 Free</span>
-            <span class="code">On Medium Pizzas</span>
-        </div>
-        <div class="offer-card">
-            <span>🍰 Free Choco Lava Cake</span>
-            <span class="code">Orders above ₹499</span>
-        </div>
-        <div class="offer-card">
-            <span>🥤 flat 50% Off</span>
-            <span class="code">Use Code: FIRST50</span>
-        </div>
-    </div>
-</section>
-
-<section class="contact">
-<h2>Contact Us</h2>
-<p>📧 sourabhsingh@gmail.com</p>
-<p>📞 +91 9302591899</p>
-</section>
-
-<footer>
-    <p>© 2026 Food Delivery App | Made by Sourabh Singh</p>
-</footer>
-
-<script src="script.js"></script>
+    <footer class="site-footer">
+        <a class="brand" href="index.html">🍴 Foodie</a>
+        <p>Good food, delivered with care.</p>
+        <small>© 2026 Food Delivery App | Made by Sourabh Singh</small>
+    </footer>
 </body>
 
 </html>
